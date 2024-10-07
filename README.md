@@ -26,11 +26,16 @@
    ```shell
    pip install -r requirement.txt
    ```
-5. rode a migração pro banco de dados
+5. copie o .env-example para o .env
+   ```
+   cp .env-example .env
+   ```
+6. adicione uma secret_key à variável de ambiente SECRET_KEY no .env
+7. rode a migração pro banco de dados
    ```shell
    python manage.py migrate
    ```
-6. inicialize o servidor
+8. inicialize o servidor
    ```shell
    python manage.py runserver
    ```
