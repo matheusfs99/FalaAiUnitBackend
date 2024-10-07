@@ -24,7 +24,7 @@
    ```
 4. instale as dependencias
    ```shell
-   pip install -r requirement.txt
+   pip install -r requirements.txt
    ```
 5. copie o .env-example para o .env
    ```
