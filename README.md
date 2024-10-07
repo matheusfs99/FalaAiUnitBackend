@@ -24,7 +24,7 @@
    ```
 4. instale as dependencias
    ```shell
-   pip install -r requirement.txt
+   pip install -r requirements.txt
    ```
 5. rode a migração pro banco de dados
    ```shell
