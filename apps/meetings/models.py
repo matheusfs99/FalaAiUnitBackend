@@ -1,6 +1,6 @@
-from datetime import datetime
 from django.db import models
 from django.forms import ValidationError
+from django.utils.timezone import now
 
 
 class Meeting(models.Model):
@@ -13,7 +13,7 @@ class Meeting(models.Model):
     def clean(self):
         if self.start_time >= self.end_time:
             raise ValidationError("End time must be after start time.")
-        if self.start_time < datetime.now():
+        if self.start_time < now():
             raise ValidationError("You cannot schedule a meeting in the past.")
 
         overlapping_meetings = Meeting.objects.filter(
