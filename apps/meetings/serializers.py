@@ -1,5 +1,5 @@
 from rest_framework import serializers
-
+from django.utils import timezone
 from apps.accounts.models import User
 from .models import Meeting
 from datetime import datetime
@@ -9,7 +9,9 @@ from apps.accounts.serializers import UserNameSerializer
 class CustomDateTimeField(serializers.DateTimeField):
     def to_internal_value(self, data):
         try:
-            return datetime.strptime(data, "%d/%m/%Y %H:%M:%S")
+            naive_datetime = datetime.strptime(data, "%d/%m/%Y %H:%M:%S")
+            aware_datetime = timezone.make_aware(naive_datetime, timezone.get_current_timezone())
+            return aware_datetime
         except ValueError:
             raise serializers.ValidationError("Formato inválido para data e hora. Use DD/MM/YYYY HH:mm:ss.")
 
